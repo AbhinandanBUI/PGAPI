@@ -90,12 +90,12 @@ commonSDCController.CurrentLocation = async (req, res) => {
     try {
         const result =  await sdc.location();
         if (result.data != null) {
-            await sdc.savedummylocation(result.data);
+       const locData=     await sdc.savedummylocation(result.data);
             const model = {
                 message: "Successfully",
                 success: true,
                 responseData: result.data,
-               
+               responseLocation:locData
             }
             res.send(model);
         } else {
